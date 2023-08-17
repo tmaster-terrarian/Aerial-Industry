@@ -1,0 +1,316 @@
+{
+	id: "28FC4536BCB405F2"
+	group: "4ED30AAB1BFFB766"
+	order_index: 0
+	filename: "chapter_1_a_rough_start"
+	title: "Chapter 1: Manual Labor"
+	icon: "minecraft:dirt"
+	default_quest_shape: "square"
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "No Mining Here"
+			icon: "minecraft:crafting_table"
+			x: 0.0d
+			y: 0.0d
+			shape: "hexagon"
+			subtitle: "Craft: Java Edition"
+			description: ["A crafting table is the start of any good playthrough, besides felling the first tree."]
+			size: 2.0d
+			id: "6E3887796E20AF90"
+			tasks: [{
+				id: "750366898A9BF8CA"
+				type: "item"
+				item: "minecraft:crafting_table"
+			}]
+			rewards: [{
+				id: "34ACDD97E6D75D13"
+				type: "item"
+				item: "minecraft:bone_meal"
+				count: 64
+			}]
+		}
+		{
+			title: "Primitive Tools"
+			icon: {
+				id: "kubejs:wooden_spade"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: 2.0d
+			y: 0.0d
+			subtitle: "a rocky start"
+			description: ["Craft a simple spade to harvest pebbles from dirt."]
+			dependencies: ["6E3887796E20AF90"]
+			id: "58F05F503B6B1BB4"
+			tasks: [
+				{
+					id: "59046DD343D9FF76"
+					type: "item"
+					item: {
+						id: "kubejs:wooden_spade"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "39A500DA081C0B5F"
+					type: "item"
+					item: "kubejs:andesite_pebble"
+					count: 4L
+				}
+			]
+			rewards: [
+				{
+					id: "61465715949D0E80"
+					type: "item"
+					item: "kubejs:stone_pebble"
+					count: 16
+				}
+				{
+					id: "069ACA1A1C6398BF"
+					type: "item"
+					item: "kubejs:andesite_pebble"
+					count: 16
+				}
+				{
+					id: "20C6C99AC092342A"
+					type: "item"
+					item: "kubejs:flint_chunk"
+					count: 4
+				}
+			]
+		}
+		{
+			title: "Inefficient Shafts"
+			icon: "create:shaft"
+			x: 3.5d
+			y: 1.5d
+			subtitle: "too poor for alloys"
+			description: ["You can make shafts using normal andesite, but don’t expect the recipe to be efficient."]
+			dependencies: ["58F05F503B6B1BB4"]
+			id: "17FD86E78765E94B"
+			tasks: [{
+				id: "5F32E264AD808F03"
+				type: "item"
+				item: "create:shaft"
+			}]
+		}
+		{
+			title: "Basic Casing"
+			x: 3.5d
+			y: -1.5d
+			subtitle: "just in case"
+			description: [
+				"Craft a casing to create your first machine."
+				""
+				"(Note: You won't have to use this recipe ever again!)"
+			]
+			dependencies: ["58F05F503B6B1BB4"]
+			id: "2C94DEB4CA3B847D"
+			tasks: [{
+				id: "172F1AE40C45D245"
+				type: "item"
+				item: "create:andesite_casing"
+			}]
+		}
+		{
+			title: "The First Machine"
+			icon: "create:millstone"
+			x: 5.0d
+			y: -1.5d
+			subtitle: "one in a million"
+			description: ["A mill is useful for many recipes coming up, so expect to use it often."]
+			dependencies: ["2C94DEB4CA3B847D"]
+			id: "63E692F98B75F34E"
+			tasks: [
+				{
+					id: "109B7B7590BB7E87"
+					type: "item"
+					item: "create:millstone"
+				}
+				{
+					id: "49FE9AE8EAED8759"
+					type: "item"
+					item: "create:hand_crank"
+				}
+			]
+			rewards: [{
+				id: "158BF60A467701E5"
+				type: "item"
+				item: "minecraft:apple"
+				count: 32
+			}]
+		}
+		{
+			title: "Metallurgy"
+			x: 8.0d
+			y: 0.0d
+			subtitle: "needle in a gravelstack"
+			description: ["Use a spade to extract iron nuggets from gravel blocks."]
+			dependencies: ["71969E05BAA0D087"]
+			id: "704FD89C1759EB73"
+			tasks: [{
+				id: "023F193DCD4C0950"
+				type: "item"
+				item: "minecraft:iron_ingot"
+			}]
+			rewards: [{
+				id: "61E3BF1EF0B00067"
+				type: "item"
+				item: "minecraft:iron_ingot"
+				count: 8
+			}]
+		}
+		{
+			title: "The Turning Gears of the Clock"
+			icon: "create:cogwheel"
+			x: 5.0d
+			y: 1.5d
+			subtitle: "gettin shifty"
+			description: ["Create some cogwheels, the core of rotational energy."]
+			dependencies: ["17FD86E78765E94B"]
+			id: "5CA6CD3B38B8B483"
+			tasks: [{
+				id: "08C1BB867A3392AB"
+				type: "item"
+				item: "create:cogwheel"
+			}]
+			rewards: [
+				{
+					id: "77AA16674358DCE0"
+					type: "item"
+					item: "create:cogwheel"
+					count: 3
+				}
+				{
+					id: "0CFEF0350885E4BC"
+					type: "item"
+					item: "create:large_cogwheel"
+					count: 2
+				}
+			]
+		}
+		{
+			title: "Actuator Actuador Presserator"
+			icon: "create:mechanical_press"
+			x: 9.5d
+			y: 0.0d
+			subtitle: "the flattening"
+			description: ["Another essential machine for the factory."]
+			dependencies: ["704FD89C1759EB73"]
+			id: "6B454D8F01B14F53"
+			tasks: [{
+				id: "0E18BBF1E4FE15C6"
+				type: "item"
+				item: "create:mechanical_press"
+			}]
+		}
+		{
+			title: "Gathering Leaves"
+			icon: "minecraft:oak_leaves"
+			x: 11.0d
+			y: 0.0d
+			subtitle: "leaf me alone"
+			description: ["Collect leaves using wooden shears, and press them in a basin to create water."]
+			dependencies: ["6B454D8F01B14F53"]
+			id: "3A9FA4C7B18705F7"
+			tasks: [
+				{
+					id: "0BB6786F967534EC"
+					type: "item"
+					item: "minecraft:oak_leaves"
+				}
+				{
+					id: "6143D0C296D6C8D4"
+					type: "item"
+					item: {
+						id: "woodenshears:wooden_shears"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+					weak_nbt_match: true
+				}
+			]
+		}
+		{
+			title: "Grinding Gravel"
+			x: 6.5d
+			y: 0.0d
+			subtitle: "bigger stones make smaller stones"
+			description: ["You can use your newly crafted millstone to grind down cobblestone into gravel, which can be further refined."]
+			dependencies: [
+				"63E692F98B75F34E"
+				"42D4CF7CBFB3978B"
+			]
+			id: "71969E05BAA0D087"
+			tasks: [{
+				id: "076F747F6033B7B9"
+				type: "item"
+				item: "minecraft:gravel"
+			}]
+			rewards: [{
+				id: "33D120D94EDD86D5"
+				type: "item"
+				item: "minecraft:gravel"
+				count: 32
+			}]
+		}
+		{
+			title: "Rocky Rocks"
+			icon: "minecraft:cobblestone"
+			x: 3.5d
+			y: 0.0d
+			subtitle: "ROCK AND STONE!"
+			description: ["Combine stone pebbles together to create some cobblestone."]
+			dependencies: ["58F05F503B6B1BB4"]
+			id: "42D4CF7CBFB3978B"
+			tasks: [{
+				id: "366F11CFD78C6C96"
+				type: "item"
+				item: "minecraft:cobblestone"
+			}]
+		}
+		{
+			title: "Automatic Automation"
+			icon: "create:water_wheel"
+			x: 13.0d
+			y: 0.0d
+			shape: "hexagon"
+			subtitle: "the beginning of something big"
+			description: ["Construct a water wheel, marking a major milestone in your journey."]
+			dependencies: ["3A9FA4C7B18705F7"]
+			size: 2.0d
+			id: "7E0311BB6A90263E"
+			tasks: [
+				{
+					id: "76A2E0549911DF0E"
+					type: "item"
+					item: "create:water_wheel"
+				}
+				{
+					id: "19F8F38261AC2741"
+					type: "item"
+					item: {
+						id: "woodenbucket:wooden_bucket"
+						Count: 1b
+						tag: {
+							Damage: 0
+							Fluid: {
+								FluidName: "minecraft:water"
+								Amount: 1000
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+	quest_links: [ ]
+}

@@ -1,0 +1,57 @@
+{
+	id: "1FE9826F6F62AB7E"
+	group: "4F2615CA15648970"
+	order_index: 0
+	filename: "welcome"
+	title: "Welcome"
+	icon: "create:goggles"
+	disable_toast: true
+	default_quest_shape: "square"
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "Welcome to the Pack"
+			icon: "create:steam_engine"
+			disable_toast: true
+			x: 0.0d
+			y: 0.0d
+			shape: "hexagon"
+			size: 3.0d
+			id: "6EAF3F023A7CB6B4"
+			tasks: [{
+				id: "18E4CC84B58AE1CE"
+				type: "checkmark"
+				title: "idk"
+			}]
+			rewards: [{
+				id: "2A2C8E339DC6102B"
+				type: "item"
+				item: "minecraft:red_bed"
+			}]
+		}
+		{
+			title: "Challenges"
+			icon: {
+				id: "minecraft:netherite_pickaxe"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: 1.5d
+			y: 2.5d
+			shape: "hexagon"
+			subtitle: "ways to further test your skills"
+			dependencies: ["6EAF3F023A7CB6B4"]
+			size: 2.0d
+			id: "77BBC1406F026CBB"
+			tasks: [{
+				id: "100AB8ED4D67A9AF"
+				type: "checkmark"
+				title: "Okay !"
+				disable_toast: true
+			}]
+		}
+	]
+	quest_links: [ ]
+}

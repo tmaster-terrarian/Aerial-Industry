@@ -1,0 +1,243 @@
+{
+	id: "635440B2A3F27D7F"
+	group: "4ED30AAB1BFFB766"
+	order_index: 1
+	filename: "chapter_2"
+	title: "Chapter 2: Veins of the Factory"
+	icon: "create:cogwheel"
+	default_quest_shape: "square"
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "Farming"
+			x: 1.5d
+			y: 1.5d
+			subtitle: "infinite food glitch?!"
+			description: [
+				"Use Bone Meal to create grass and harvest it for seeds."
+				"You can obtain Bone Meal by composting leaves."
+			]
+			dependencies: ["67F00B0500B503A0"]
+			id: "2480E213886FB1D9"
+			tasks: [{
+				id: "4EAF76813BD6DC28"
+				type: "item"
+				item: "minecraft:wheat"
+			}]
+			rewards: [{
+				id: "030EAD2EA8A45E53"
+				type: "item"
+				item: "minecraft:wheat_seeds"
+				count: 32
+			}]
+		}
+		{
+			title: "Endless Landfill"
+			icon: "minecraft:dirt"
+			x: 3.0d
+			y: 1.5d
+			subtitle: "doing the dirty work"
+			description: [
+				"Milling dirt gives you the same resources as digging with a spade, but sometimes the dirt is destroyed in the process."
+				"Mixing a hay bale with some water and gravel makes a nice replacement."
+			]
+			dependencies: ["2480E213886FB1D9"]
+			optional: true
+			id: "301B6859D9527AC7"
+			tasks: [
+				{
+					id: "259F17ED4DC73837"
+					type: "item"
+					item: "create:mechanical_mixer"
+				}
+				{
+					id: "279CC62E69B508FE"
+					type: "checkmark"
+					title: "Automated"
+				}
+			]
+		}
+		{
+			title: "Tree Rosin"
+			icon: "thermal:rosin"
+			x: 1.5d
+			y: -1.5d
+			subtitle: "doesn't smell like roses"
+			description: ["Milling logs has a chance to give rosin, a precursor to rubber."]
+			dependencies: ["67F00B0500B503A0"]
+			id: "37AF8EC85F54D94D"
+			tasks: [{
+				id: "03FCB12CF4825CB4"
+				type: "item"
+				item: "thermal:rosin"
+			}]
+		}
+		{
+			title: "Rubbery Substances"
+			icon: "thermal:cured_rubber"
+			x: 3.0d
+			y: -1.5d
+			subtitle: "just add water"
+			description: [
+				"Mixing a few rosin with water rehydrates it and makes some sticky rubber, which can be cured with a furnace."
+				"The perfect ingredient to your budding factory."
+			]
+			dependencies: ["37AF8EC85F54D94D"]
+			id: "3C3E4E7180951B8E"
+			tasks: [{
+				id: "31963FB61E0343E8"
+				type: "item"
+				item: "thermal:cured_rubber"
+			}]
+			rewards: [{
+				id: "0FA7F9C9B9AAB288"
+				type: "item"
+				item: "thermal:rubber"
+				count: 4
+			}]
+		}
+		{
+			title: "Item Logistics!"
+			icon: "create:belt_connector"
+			x: 4.5d
+			y: -1.5d
+			subtitle: "i've been craving some spaghetti"
+			description: ["Through the use of mechanical belts, a whole new world of automation opens up."]
+			dependencies: ["3C3E4E7180951B8E"]
+			id: "3D4FD77FCE9A969E"
+			tasks: [{
+				id: "4E4CC7575BB538B2"
+				type: "item"
+				item: "create:belt_connector"
+			}]
+			rewards: [{
+				id: "28A9FC6161D97A4D"
+				type: "item"
+				item: "create:shaft"
+				count: 8
+			}]
+		}
+		{
+			title: "A Use for Your Flint"
+			icon: "minecraft:prismarine_shard"
+			x: 2.0d
+			y: 0.0d
+			subtitle: "super absorbent"
+			description: ["Mixing flint with some water causes it to turn into a mysterious aquatic shard. Its properties could prove useful in your factory."]
+			dependencies: ["67F00B0500B503A0"]
+			id: "6D005FCD2AECC73D"
+			tasks: [{
+				id: "54E20964F626DCE8"
+				type: "item"
+				item: "minecraft:prismarine_shard"
+			}]
+		}
+		{
+			title: "Veins of the Factory"
+			icon: "create:cogwheel"
+			disable_toast: true
+			x: 0.0d
+			y: 0.0d
+			shape: "hexagon"
+			subtitle: "laying the groundwork for ultimate automation"
+			dependencies: ["28FC4536BCB405F2"]
+			size: 2.0d
+			id: "67F00B0500B503A0"
+			tasks: [{
+				id: "6341A63D23BC2A8A"
+				type: "checkmark"
+				title: "Start"
+			}]
+		}
+		{
+			title: "Trace Element"
+			icon: "create:copper_nugget"
+			x: 3.5d
+			y: 0.0d
+			subtitle: "get to the copper"
+			description: ["A block of those prismarine shards seems to have enough trace copper to be extracted by mill."]
+			dependencies: ["6D005FCD2AECC73D"]
+			id: "2EE1544623EEDD83"
+			tasks: [{
+				id: "3A1A937F56C0773D"
+				type: "item"
+				item: "create:copper_nugget"
+			}]
+		}
+		{
+			title: "Fluid Logistics!"
+			icon: "create:fluid_pipe"
+			x: 5.0d
+			y: 0.0d
+			subtitle: "like items, but wet"
+			description: ["These newly-made copper ingots can be turned into a variety of tools to transport fluids around your base."]
+			dependencies: ["2EE1544623EEDD83"]
+			id: "4DA58D0619DF1793"
+			tasks: [{
+				id: "415D995E1CD73F73"
+				type: "item"
+				item: "create:fluid_pipe"
+			}]
+			rewards: [{
+				id: "2DF83065AE9DAF15"
+				type: "item"
+				item: "create:fluid_tank"
+			}]
+		}
+		{
+			title: "Wet Rocks"
+			icon: "minecraft:dripstone_block"
+			x: 6.5d
+			y: 0.0d
+			subtitle: "that stone is dripped out fr fr"
+			description: [
+				"The first sequenced assembly recipe! Dripstone and cauldrons can be used to automate lava when no other methods are available."
+				""
+				"(For an extra challenge, try obtaining the first lava on your own!)"
+			]
+			dependencies: ["4DA58D0619DF1793"]
+			id: "179DE1B88023A9B5"
+			tasks: [{
+				id: "7630E75279F705AB"
+				type: "item"
+				item: "minecraft:dripstone_block"
+			}]
+			rewards: [{
+				id: "30B5D8D7FE1CC0FE"
+				type: "item"
+				item: "minecraft:lava_bucket"
+				count: 2
+			}]
+		}
+		{
+			title: "Into the Nether"
+			icon: "minecraft:obsidian"
+			x: 8.5d
+			y: 0.0d
+			shape: "hexagon"
+			subtitle: "not so skyblock anymore"
+			description: ["The lava you made with the dripstone can be used to make a nether portal, opening up an entire new dimension with abundant resources to be exploited."]
+			dependencies: ["179DE1B88023A9B5"]
+			size: 2.0d
+			id: "136C04C40B994F68"
+			tasks: [{
+				id: "0DF227B5189DA0A9"
+				type: "item"
+				item: "minecraft:obsidian"
+				count: 10L
+			}]
+			rewards: [{
+				id: "546E4E90496CD9AB"
+				type: "item"
+				item: {
+					id: "minecraft:flint_and_steel"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+	]
+	quest_links: [ ]
+}

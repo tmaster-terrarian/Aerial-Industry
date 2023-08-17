@@ -1,0 +1,21 @@
+{
+	id: "7C9FDC30C87A6E78"
+	group: "4F2615CA15648970"
+	order_index: 1
+	filename: "chapter_map"
+	title: "Chapter Map"
+	icon: "create:clipboard"
+	disable_toast: true
+	default_quest_shape: "square"
+	default_hide_dependency_lines: false
+	quests: [{
+		title: "Create: Aerial Industry"
+		icon: "create:display_link"
+		x: 0.0d
+		y: 0.0d
+		shape: "hexagon"
+		size: 2.0d
+		id: "028E1DCDCFAD7B57"
+	}]
+	quest_links: [ ]
+}

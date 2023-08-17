@@ -1,0 +1,15 @@
+
+.curseclient
+crash-reports/
+defaultconfigs/
+downloads/
+logs/
+saves/
+schematics/
+screenshots/
+skyblock_exports/
+minecraftinstance.json
+options.txt
+rhino.local.properties
+usercache.json
+usernamecache.json
