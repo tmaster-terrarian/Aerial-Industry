@@ -44,18 +44,18 @@
 			dependencies: ["2480E213886FB1D9"]
 			optional: true
 			id: "301B6859D9527AC7"
-			tasks: [
-				{
-					id: "259F17ED4DC73837"
-					type: "item"
-					item: "create:mechanical_mixer"
-				}
-				{
-					id: "279CC62E69B508FE"
-					type: "checkmark"
-					title: "Automated"
-				}
-			]
+			tasks: [{
+				id: "11BBC75C94CFCF76"
+				type: "item"
+				item: "minecraft:dirt"
+				count: 16L
+			}]
+			rewards: [{
+				id: "02263F496586D5DE"
+				type: "item"
+				item: "minecraft:dirt"
+				count: 64
+			}]
 		}
 		{
 			title: "Tree Rosin"
@@ -144,9 +144,9 @@
 			size: 2.0d
 			id: "67F00B0500B503A0"
 			tasks: [{
-				id: "6341A63D23BC2A8A"
+				id: "6DA892928971A3D2"
 				type: "checkmark"
-				title: "Start"
+				title: "Begin Chapter"
 			}]
 		}
 		{
@@ -221,21 +221,10 @@
 			size: 2.0d
 			id: "136C04C40B994F68"
 			tasks: [{
-				id: "0DF227B5189DA0A9"
-				type: "item"
-				item: "minecraft:obsidian"
-				count: 10L
-			}]
-			rewards: [{
-				id: "546E4E90496CD9AB"
-				type: "item"
-				item: {
-					id: "minecraft:flint_and_steel"
-					Count: 1b
-					tag: {
-						Damage: 0
-					}
-				}
+				id: "459059235A71BB75"
+				type: "advancement"
+				advancement: "minecraft:story/enter_the_nether"
+				criterion: ""
 			}]
 		}
 	]

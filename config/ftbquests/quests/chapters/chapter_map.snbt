@@ -3,19 +3,29 @@
 	group: "4F2615CA15648970"
 	order_index: 1
 	filename: "chapter_map"
-	title: "Chapter Map"
+	title: "Tips and Info"
 	icon: "create:clipboard"
 	disable_toast: true
 	default_quest_shape: "square"
 	default_hide_dependency_lines: false
 	quests: [{
-		title: "Create: Aerial Industry"
-		icon: "create:display_link"
-		x: 0.0d
-		y: 0.0d
-		shape: "hexagon"
-		size: 2.0d
-		id: "028E1DCDCFAD7B57"
+		title: "Storage Drawers"
+		icon: "storagedrawers:oak_full_drawers_1"
+		x: 1.0d
+		y: 1.0d
+		subtitle: "early logistics"
+		description: ["Storage drawers-in combination with drawer keys and funnels-can be used to create an early form of item filters before you have access to brass."]
+		id: "522A8A14DE1EFAE2"
+		tasks: [{
+			id: "681E766E03422322"
+			type: "item"
+			item: "storagedrawers:oak_full_drawers_1"
+		}]
+		rewards: [{
+			id: "782949E78738CB79"
+			type: "item"
+			item: "storagedrawers:drawer_key"
+		}]
 	}]
 	quest_links: [ ]
 }

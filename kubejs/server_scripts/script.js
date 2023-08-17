@@ -27,7 +27,7 @@ onEvent('recipes', event => {
 	], {
 		P: '#minecraft:planks',
 		S: 'minecraft:stick'
-	})
+	}).id('kubejs:crafting/wooden_spade_manual_only')
 
 	event.shaped(MC('cobblestone'), [
 		'AA',
@@ -56,7 +56,7 @@ onEvent('recipes', event => {
 		'A'
 	], {
 		A: 'minecraft:andesite'
-	})
+	}).id('kubejs:crafting/shaft_manual_only')
 
 	event.shaped(CR('hand_crank'), [
 		'A  ',
@@ -65,7 +65,7 @@ onEvent('recipes', event => {
 	], {
 		A: 'minecraft:andesite',
 		P: '#minecraft:planks'
-	})
+	}).id('kubejs:crafting/hand_crank_manual_only')
 
 	event.shaped(CR('andesite_casing'), [
 		' A ',
@@ -74,7 +74,7 @@ onEvent('recipes', event => {
 	], {
 		A: 'minecraft:andesite',
 		L: '#minecraft:logs'
-	})
+	}).id('kubejs:crafting/andesite_casing_manual_only')
 
 	event.recipes.createCompacting(Fluid.of(MC('water'), 100), ['#minecraft:leaves'])
 
@@ -82,6 +82,7 @@ onEvent('recipes', event => {
 
 	event.remove({ id: TE('rubber_from_vine') })
 	event.remove({ id: TE('rubber_from_dandelion') })
+	// event.remove({ id: TE('rubber_3') })
 	event.recipes.createMixing('1x ' + TE("rubber"), [Fluid.of(MC('water'), 1000), TE("rosin", 2)])
 
 	event.remove({ id: CR('crafting/kinetics/belt_connector') })
@@ -139,6 +140,8 @@ onEvent('recipes', event => {
 
 	event.recipes.createMixing(MC("dirt"), [Fluid.of(MC('water'), 250), MC("gravel"), MC("#leaves", 4)])
 
+	event.recipes.createMixing(MC("dirt"), [Fluid.of(MC('water'), 250), MC("gravel"), MC("wheat", 1)])
+
 	event.recipes.createMixing(MC("prismarine_shard"), [Fluid.of(MC('water'), 250), MC("flint")])
 	event.custom({
 		"type": "create:milling",
@@ -177,6 +180,7 @@ onEvent('recipes', event => {
 
 	event.recipes.createMixing(Fluid.of(TC('slime'), 250), [Fluid.of(MC('water'), 250), MC("slime_ball")])
 
+	// magmatic precursor sequenced assembly
 	let transitional = 'kubejs:incomplete_magmatic_precursor'
 	event.recipes.createSequencedAssembly([
 		'kubejs:magmatic_precursor',
@@ -185,8 +189,8 @@ onEvent('recipes', event => {
 		event.recipes.createPressing(transitional, transitional)
 	]).transitionalItem(transitional).loops(20).id('kubejs:magmatic_precursor')
 
-	event.smelting(MC('magma_block'), KJ('magmatic_precursor'))
-	event.blasting(MC('magma_block'), KJ('magmatic_precursor'))
+	event.smelting(MC('magma_block'), KJ('magmatic_precursor')).xp(0)
+	event.blasting(MC('magma_block'), KJ('magmatic_precursor')).xp(0)
 
 	event.custom({
 		"type": "tconstruct:melting",
@@ -214,8 +218,9 @@ onEvent('recipes', event => {
 		S: CR('copper_sheet'),
 		R: TE('cured_rubber'),
 		L: CR('andesite_casing')
-	})
+	}).id('kubejs:crafting/copper_casing_manual_only')
 
+	// copper casing sequenced assembly
 	transitional = 'kubejs:incomplete_copper_casing'
 	event.recipes.createSequencedAssembly([
 		CR('copper_casing'),
@@ -224,6 +229,7 @@ onEvent('recipes', event => {
 		event.recipes.createDeploying(transitional, [transitional, CR('copper_sheet')])
 	]).transitionalItem(transitional).loops(2).id(CR('copper_casing'))
 
+	// dripstone sequenced assembly
 	transitional = 'minecraft:terracotta'
 	event.recipes.createSequencedAssembly([
 		MC('dripstone_block'),
@@ -233,48 +239,56 @@ onEvent('recipes', event => {
 		event.recipes.createPressing(transitional, transitional)
 	]).transitionalItem(transitional).loops(1).id(MC('dripstone_block'))
 
+	// pointed dripstone sequenced assembly
+	transitional = MC('dripstone_block')
+	event.recipes.createSequencedAssembly([
+		MC('pointed_dripstone', 4),
+	], MC('dripstone_block'), [
+		event.recipes.createCutting(transitional, transitional),
+		event.recipes.createCutting(transitional, transitional)
+	]).transitionalItem(transitional).loops(1).id(MC('pointed_dripstone'))
+
 	event.recipes.createCompacting([Fluid.of(MC('lava'), 250), MC('cobblestone')], MC('magma_block'))
 
 	event.remove({ id: TC('common/flint') })
-	event.remove({ id: CR('crafting/logistics/andesite_funnel') })
-	event.shaped(CR('andesite_funnel'), [
-		'S',
-		'R'
-	], {
-		S: CR('andesite_alloy'),
-		R: TE('cured_rubber')
-	})
-	event.remove({ id: CR('crafting/logistics/brass_funnel') })
-	event.shaped(CR('brass_funnel'), [
-		'T',
-		'S',
-		'R'
-	], {
-		T: CR('electron_tube'),
-		S: CR('brass_ingot'),
-		R: TE('cured_rubber')
-	})
-	
-	event.remove({ id: CR('crafting/logistics/andesite_tunnel') })
-	event.shaped(CR('andesite_tunnel'), [
-		'SS',
-		'RR'
-	], {
-		S: CR('andesite_alloy'),
-		R: TE('cured_rubber')
-	})
-	event.remove({ id: CR('crafting/logistics/brass_tunnel') })
-	event.shaped(CR('brass_tunnel'), [
-		'T ',
-		'SS',
-		'RR'
-	], {
-		T: CR('electron_tube'),
-		S: CR('brass_ingot'),
-		R: TE('cured_rubber')
-	})
-
 	event.remove({ id: CR('milling/gravel') })
+
+	event.replaceInput({ mod: 'create' }, MC('dried_kelp'), TE('cured_rubber'))
+
+	event.replaceInput({}, '#forge:plates/iron', CR('iron_sheet'))
+	event.replaceInput({}, '#forge:plates/gold', CR('golden_sheet'))
+	event.replaceInput({}, '#forge:dusts/gold', TE('gold_dust'))
+	event.replaceInput({}, '#forge:dusts/iron', TE('iron_dust'))
+	event.replaceInput({}, '#forge:dusts/copper', TE('copper_dust'))
+	event.replaceInput({}, '#forge:plates/copper', CR('copper_sheet'))
+	event.replaceInput({}, '#forge:nuggets/copper', CR('copper_nugget'))
+	event.replaceOutput({}, '#forge:nuggets/copper', CR('copper_nugget'))
+	event.replaceOutput({}, '#forge:nuggets/silver', TE('silver_nugget'))
+	event.replaceOutput({}, '#forge:ingots/silver', TE('silver_ingot'))
+	event.replaceOutput({}, '#forge:storage_blocks/silver', TE('silver_block'))
+	event.replaceInput({}, '#forge:storage_blocks/copper', CR('copper_block'))
+	event.replaceOutput({}, '#forge:storage_blocks/copper', CR('copper_block'))
+	event.replaceInput({}, '#forge:nuggets/netherite', TC('netherite_nugget'))
+	event.replaceOutput({}, '#forge:nuggets/netherite', TC('netherite_nugget'))
+
+	event.remove({ id: TE('storage/netherite_nugget_from_ingot') })
+
+	event.remove({ id: CR('crushing/ochrum') })
+	event.remove({ id: CR('crushing/ochrum_recycling') })
+	event.remove({ id: CR('crushing/crimsite') })
+	event.remove({ id: CR('crushing/crimsite_recycling') })
+	event.remove({ id: CR('crushing/veridium') })
+	event.remove({ id: CR('crushing/veridium_recycling') })
+	event.remove({ id: CR('crushing/asurine') })
+	event.remove({ id: CR('crushing/asurine_recycling') })
+	event.remove({ id: CR('crushing/diorite') })
+	event.remove({ id: CR('crushing/diorite_recycling') })
+
+	event.recipes.createCrushing(CR('crushed_raw_gold'), CR('#stone_types/ochrum'))
+	event.recipes.createCrushing(CR('crushed_raw_iron'), CR('#stone_types/crimsite'))
+	event.recipes.createCrushing(CR('crushed_raw_copper'), CR('#stone_types/veridium'))
+	event.recipes.createCrushing(CR('crushed_raw_zinc'), CR('#stone_types/asurine'))
+	event.recipes.createCrushing(MC('quartz'), CR('#stone_types/diorite'))
 })
 
 onEvent('item.tags', event => {

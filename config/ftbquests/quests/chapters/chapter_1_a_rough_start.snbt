@@ -45,25 +45,17 @@
 			description: ["Craft a simple spade to harvest pebbles from dirt."]
 			dependencies: ["6E3887796E20AF90"]
 			id: "58F05F503B6B1BB4"
-			tasks: [
-				{
-					id: "59046DD343D9FF76"
-					type: "item"
-					item: {
-						id: "kubejs:wooden_spade"
-						Count: 1b
-						tag: {
-							Damage: 0
-						}
+			tasks: [{
+				id: "59046DD343D9FF76"
+				type: "item"
+				item: {
+					id: "kubejs:wooden_spade"
+					Count: 1b
+					tag: {
+						Damage: 0
 					}
 				}
-				{
-					id: "39A500DA081C0B5F"
-					type: "item"
-					item: "kubejs:andesite_pebble"
-					count: 4L
-				}
-			]
+			}]
 			rewards: [
 				{
 					id: "61465715949D0E80"
@@ -103,7 +95,7 @@
 		{
 			title: "Basic Casing"
 			x: 3.5d
-			y: -1.5d
+			y: 0.0d
 			subtitle: "just in case"
 			description: [
 				"Craft a casing to create your first machine."
@@ -122,10 +114,13 @@
 			title: "The First Machine"
 			icon: "create:millstone"
 			x: 5.0d
-			y: -1.5d
+			y: 0.0d
 			subtitle: "one in a million"
 			description: ["A mill is useful for many recipes coming up, so expect to use it often."]
-			dependencies: ["2C94DEB4CA3B847D"]
+			dependencies: [
+				"2C94DEB4CA3B847D"
+				"5CA6CD3B38B8B483"
+			]
 			id: "63E692F98B75F34E"
 			tasks: [
 				{
@@ -148,7 +143,7 @@
 		}
 		{
 			title: "Metallurgy"
-			x: 8.0d
+			x: 6.5d
 			y: 0.0d
 			subtitle: "needle in a gravelstack"
 			description: ["Use a spade to extract iron nuggets from gravel blocks."]
@@ -172,14 +167,21 @@
 			x: 5.0d
 			y: 1.5d
 			subtitle: "gettin shifty"
-			description: ["Create some cogwheels, the core of rotational energy."]
+			description: ["Create some cogwheels, the core components of rotational power."]
 			dependencies: ["17FD86E78765E94B"]
 			id: "5CA6CD3B38B8B483"
-			tasks: [{
-				id: "08C1BB867A3392AB"
-				type: "item"
-				item: "create:cogwheel"
-			}]
+			tasks: [
+				{
+					id: "08C1BB867A3392AB"
+					type: "item"
+					item: "create:cogwheel"
+				}
+				{
+					id: "7E6298379C40FCA5"
+					type: "item"
+					item: "create:large_cogwheel"
+				}
+			]
 			rewards: [
 				{
 					id: "77AA16674358DCE0"
@@ -191,17 +193,17 @@
 					id: "0CFEF0350885E4BC"
 					type: "item"
 					item: "create:large_cogwheel"
-					count: 2
+					count: 3
 				}
 			]
 		}
 		{
 			title: "Actuator Actuador Presserator"
 			icon: "create:mechanical_press"
-			x: 9.5d
+			x: 8.0d
 			y: 0.0d
 			subtitle: "the flattening"
-			description: ["Another essential machine for the factory."]
+			description: ["Another essential machine for the factory, the press can create metal plates which will be an important ingredient for many future recipes."]
 			dependencies: ["704FD89C1759EB73"]
 			id: "6B454D8F01B14F53"
 			tasks: [{
@@ -213,7 +215,7 @@
 		{
 			title: "Gathering Leaves"
 			icon: "minecraft:oak_leaves"
-			x: 11.0d
+			x: 9.5d
 			y: 0.0d
 			subtitle: "leaf me alone"
 			description: ["Collect leaves using wooden shears, and press them in a basin to create water."]
@@ -241,8 +243,8 @@
 		}
 		{
 			title: "Grinding Gravel"
-			x: 6.5d
-			y: 0.0d
+			x: 5.0d
+			y: -1.5d
 			subtitle: "bigger stones make smaller stones"
 			description: ["You can use your newly crafted millstone to grind down cobblestone into gravel, which can be further refined."]
 			dependencies: [
@@ -266,9 +268,9 @@
 			title: "Rocky Rocks"
 			icon: "minecraft:cobblestone"
 			x: 3.5d
-			y: 0.0d
+			y: -1.5d
 			subtitle: "ROCK AND STONE!"
-			description: ["Combine stone pebbles together to create some cobblestone."]
+			description: ["Combine stone pebbles together to create cobblestone."]
 			dependencies: ["58F05F503B6B1BB4"]
 			id: "42D4CF7CBFB3978B"
 			tasks: [{
@@ -280,7 +282,7 @@
 		{
 			title: "Automatic Automation"
 			icon: "create:water_wheel"
-			x: 13.0d
+			x: 11.5d
 			y: 0.0d
 			shape: "hexagon"
 			subtitle: "the beginning of something big"
@@ -302,10 +304,6 @@
 						Count: 1b
 						tag: {
 							Damage: 0
-							Fluid: {
-								FluidName: "minecraft:water"
-								Amount: 1000
-							}
 						}
 					}
 				}

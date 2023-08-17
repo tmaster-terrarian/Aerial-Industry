@@ -25,7 +25,7 @@ onEvent('block.registry', event => {
 		.material('sand')
 		.hardness(0.5)
 		.resistance(0.5)
-		.displayName('Black Sand')
+		.displayName('Blacksand')
 		.tagBlock('minecraft:mineable/shovel')
     	.tagBlock('forge:sand')
 
