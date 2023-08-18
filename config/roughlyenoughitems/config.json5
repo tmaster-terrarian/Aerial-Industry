@@ -149,7 +149,7 @@
 		"scrollingEntryListWidget": false,
 		"horizontalEntriesBoundaries": 1.0,
 		"verticalEntriesBoundaries": 1.0,
-		"horizontalEntriesBoundariesColumns": 12,
+		"horizontalEntriesBoundariesColumns": 10,
 		"verticalEntriesBoundariesRows": 1000,
 		"favoritesHorizontalEntriesBoundaries": 1.0,
 		"favoritesHorizontalEntriesBoundariesColumns": 50,

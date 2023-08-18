@@ -12,6 +12,8 @@ let CR = (id, x) => MOD("create", id, x)
 let CR_CA = (id, x) => MOD("createaddition", id, x)
 let CR_SR = (id, x) => MOD("railways", id, x)
 let CR_ME = (id, x) => MOD("create_mechanical_extruder", id, x)
+let CR_ET = (id, x) => MOD("createendertransmission", id, x)
+let CR_EI = (id, x) => MOD("create_enchantment_industry", id, x)
 let KJ = (id, x) => MOD("kubejs", id, x)
 let MC = (id, x) => MOD("minecraft", id, x)
 let WS = (id, x) => MOD("woodenshears", id, x)
@@ -289,6 +291,96 @@ onEvent('recipes', event => {
 	event.recipes.createCrushing(CR('crushed_raw_copper'), CR('#stone_types/veridium'))
 	event.recipes.createCrushing(CR('crushed_raw_zinc'), CR('#stone_types/asurine'))
 	event.recipes.createCrushing(MC('quartz'), CR('#stone_types/diorite'))
+
+	// event.replaceInput({}, TE('machine_frame'), CR('railway_casing'))
+
+	let dust_process = (name, ingot, nugget, dust, ore, byproduct, fluid_byproduct_name) => {
+		let crushed = CR('crushed_raw_' + name)
+		let fluid = TC("molten_" + name)
+		let fluid_byproduct = TC("molten_" + fluid_byproduct_name)
+
+		event.smelting(Item.of(nugget, 3), crushed)
+		event.smelting(Item.of(nugget, 1), dust).cookingTime(40)
+		event.recipes.createMilling([Item.of(crushed, 1), MC('stone')], ore)
+		event.recipes.createMilling([Item.of(dust, 3)], crushed)
+		event.recipes.createCrushing([Item.of(dust, 3), Item.of(dust, 3).withChance(0.5)], crushed)
+		event.recipes.thermal.pulverizer([Item.of(dust, 6)], crushed).energy(15000)
+		event.recipes.thermal.pulverizer([crushed], ore).energy(3000)
+		event.recipes.thermal.crucible(Fluid.of(fluid, 144), ingot).energy(2000)
+
+		event.recipes.thermal.crucible(Fluid.of(fluid, 48), dust).energy(3000)
+		event.recipes.createSplashing([Item.of(nugget, 2)], dust)
+
+		event.remove({ input: "#forge:ores/" + name, type: TE("smelter") })
+		event.remove({ input: "#forge:ores/" + name, type: TE("pulverizer") })
+		event.remove({ input: "#forge:ores/" + name, type: MC("blasting") })
+		event.remove({ input: "#forge:ores/" + name, type: MC("smelting") })
+		event.remove({ input: "#forge:ores/" + name, type: CR("crushing") })
+		event.remove({ input: "#forge:ores/" + name, type: CR("milling") })
+
+		event.custom({
+			"type": "thermal:smelter",
+			"ingredient": {
+				"item": crushed
+			},
+			"result": [
+				{
+					"item": nugget,
+					"chance": 9.0
+				},
+				{
+					"item": byproduct,
+					"chance": (byproduct.endsWith('nugget') ? 1.8 : 0.2)
+				},
+				{
+					"item": "thermal:rich_slag",
+					"chance": 0.2
+				}
+			],
+			"experience": 0.2,
+			"energy": 20000
+		})
+
+		event.custom({
+			"type": "tconstruct:melting",
+			"ingredient": {
+				"item": dust
+			},
+			"result": {
+				"fluid": fluid,
+				"amount": 48
+			},
+			"temperature": 500,
+			"time": 30,
+			"byproducts": [
+				{
+					"fluid": fluid_byproduct,
+					"amount": 16
+				}
+			]
+		});
+	}
+
+	dust_process('nickel', TE('nickel_ingot'), TE('nickel_nugget'), TE('nickel_dust'), TE('nickel_ore'), CR('copper_nugget'), 'copper')
+	dust_process('lead', TE('lead_ingot'), TE('lead_nugget'), TE('lead_dust'), TE('lead_ore'), MC('iron_nugget'), 'iron')
+	dust_process('iron', MC('iron_ingot'), MC('iron_nugget'), TE('iron_dust'), MC('iron_ore'), TE('nickel_nugget'), 'nickel')
+	dust_process('gold', MC('gold_ingot'), MC('gold_nugget'), TE('gold_dust'), MC('gold_ore'), TE('cinnabar'), 'zinc')
+	dust_process('copper', MC('copper_ingot'), CR('copper_nugget'), TE('copper_dust'), MC('copper_ore'), MC('gold_nugget'), 'gold')
+	dust_process('zinc', CR('zinc_ingot'), CR('zinc_nugget'), KJ('zinc_dust'), CR('zinc_ore'), TE('sulfur'), 'lead')
+
+	event.recipes.createMixing(Fluid.of(KJ('metal_slurry'), 1000), [TE('gold_dust'), TE('iron_dust'), TE('copper_dust'), KJ('zinc_dust'), Fluid.of(MC('water'), 1000)]).superheated()
+
+	let slurry_spouting = (output, input) =>
+	{
+		event.recipes.createFilling(output, [Fluid.of(KJ('metal_slurry'), 250), input])
+	}
+
+	slurry_spouting(CR('ochrum'), MC('gold_nugget'))
+	slurry_spouting(CR('crimsite'), MC('iron_nugget'))
+	slurry_spouting(CR('veridium'), CR('copper_nugget'))
+	slurry_spouting(CR('asurine'), CR('zinc_nugget'))
+
+	event.remove({ output: TC('efln_ball') })
 })
 
 onEvent('item.tags', event => {

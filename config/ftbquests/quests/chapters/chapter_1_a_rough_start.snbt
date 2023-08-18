@@ -142,11 +142,11 @@
 			}]
 		}
 		{
-			title: "Metallurgy"
+			title: "Simple Metallurgy"
 			x: 6.5d
 			y: 0.0d
 			subtitle: "needle in a gravelstack"
-			description: ["Use a spade to extract iron nuggets from gravel blocks."]
+			description: ["Use a spade to extract iron nuggets from gravel blocks, which can then be crafted into iron ingots."]
 			dependencies: ["71969E05BAA0D087"]
 			id: "704FD89C1759EB73"
 			tasks: [{
@@ -223,11 +223,6 @@
 			id: "3A9FA4C7B18705F7"
 			tasks: [
 				{
-					id: "0BB6786F967534EC"
-					type: "item"
-					item: "minecraft:oak_leaves"
-				}
-				{
 					id: "6143D0C296D6C8D4"
 					type: "item"
 					item: {
@@ -238,6 +233,18 @@
 						}
 					}
 					weak_nbt_match: true
+				}
+				{
+					id: "3CD71815DD13034E"
+					type: "item"
+					title: "Any #minecraft:leaves"
+					item: {
+						id: "itemfilters:tag"
+						Count: 1b
+						tag: {
+							value: "minecraft:leaves"
+						}
+					}
 				}
 			]
 		}

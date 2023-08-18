@@ -1,0 +1,28 @@
+{
+	id: "32A31E98088CB37A"
+	group: "4ED30AAB1BFFB766"
+	order_index: 2
+	filename: "chapter_3_intermediate_item_processing"
+	title: "Chapter 3: Another World"
+	icon: "minecraft:netherrack"
+	default_quest_shape: "square"
+	default_hide_dependency_lines: false
+	quests: [{
+		title: "Another World"
+		icon: "minecraft:netherrack"
+		x: 0.0d
+		y: 0.0d
+		shape: "hexagon"
+		subtitle: "it's getting hot in here"
+		description: ["In this chapter you will expand into another dimension, and use more advanced forms of item processing."]
+		dependencies: ["635440B2A3F27D7F"]
+		size: 2.0d
+		id: "1547B31F4E3B4733"
+		tasks: [{
+			id: "00D6580B123158A4"
+			type: "checkmark"
+			title: "Begin Chapter"
+		}]
+	}]
+	quest_links: [ ]
+}
